@@ -3,7 +3,7 @@ const app = express()
 
 const PORT = 8000
 
-app.listen(PORT, (req,res) => {
+app.listen(PORT, () => {
     console.log("Graças a deus conectou")
 })
 
