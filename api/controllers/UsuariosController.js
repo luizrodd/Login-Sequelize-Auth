@@ -1,7 +1,5 @@
 const database = require("../models");
-const { Op } = require("sequelize");
 const { hash } = require("bcryptjs");
-const uuid = require("uuid");
 
 class UsuariosController {
   static async listaUsuarios(req, res) {
@@ -73,6 +71,18 @@ class UsuariosController {
     } catch (error) {
       console.error(error);
       res.status(500).send("Ocorreu um erro durante a edição do usuário.");
+    }
+  }
+  
+  static async excluiUsuario(req,res) {
+    const {id} = req.params
+    try{
+      const excluiUsuario = await database.usuarios.delete({
+        where: { id: id },
+      });
+      res.status(200).send(excluiUsuario);
+    }catch(error){
+
     }
   }
 }
